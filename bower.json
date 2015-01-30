@@ -1,0 +1,30 @@
+{
+  "name": "ruckercss-objects.media",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ruckercss/objects.media",
+  "authors": [
+    "DiAngelo (diangelo@bitvice.ro)"
+  ],
+  "description": "Rucker CSS Media Object",
+  "main": "_obj.media.rk.scss",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "rucker",
+    "scss",
+    "sass",
+    "css",
+    "media",
+    "object"
+  ],
+  "license": "Apache 2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": []
+}
