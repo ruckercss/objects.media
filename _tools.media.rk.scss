@@ -1,0 +1,58 @@
+//
+// Media mixins
+//
+
+//
+// rkrFnMediaRule
+// Generate Media Object related rule
+//
+@function rkrFnMediaRule($_inAttr, $_inIsElem: true) {
+
+  @return rkrFnEntityRule(media, $rkrMediaNs, $_inAttr, $_inIsElem);
+
+}
+
+
+
+//
+// rkrMxMediaModifiers
+// Generate media modifiers
+//
+
+@mixin rkrMxMediaModifiers() {
+
+  $mMediaSpacing: rkrFnMModifiers(5px, 5px, false);
+
+  @each $key,$val in $mMediaSpacing {
+
+    /* Media object base with #{$key} modifier */
+    #{rkrFnMediaRule(map-get($rkrMModifiersNaming, $key), false)} {
+
+      > #{rkrFnMediaRule(img)}
+      { margin-right: $val; }
+
+      &#{rkrFnMediaRule(rev, false)} {
+        > #{rkrFnMediaRule(img)} {
+          margin-right: 0;
+          margin-left: $val;
+        }
+      }
+
+      &#{rkrFnMediaRule($rkrMediaAttrNameBlock, false)} {
+        > #{rkrFnMediaRule(img)}
+        { margin-bottom: $val; }
+        
+        &#{rkrFnMediaRule(rev, false)} {
+          > #{rkrFnMediaRule(img)} {
+            margin-bottom: 0;
+            margin-top: $val;
+          }
+        }
+
+      } // media block
+
+    } // base rule
+
+  } // @each
+
+}

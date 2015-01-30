@@ -1,0 +1,44 @@
+//
+// Media Object configuration
+//
+
+// Media namespace
+$rkrMediaNs: $rkrNamespace !default;
+
+$rkrMediaAttrType:          object !default;
+
+// Configure media object naming - abbreviations used
+$rkrMediaAttrName:          'media' !default;
+$rkrMediaAttrNameBase:      'base'  !default;
+$rkrMediaAttrNameImage:     'img'   !default;
+$rkrMediaAttrNameBody:      'body'  !default;
+$rkrMediaAttrNameBlock:     'block' !default;
+$rkrMediaAttrNameReversed:  'rev'   !default;
+$rkrMediaAttrNameSticked:   'stkd'  !default;
+$rkrMediaAttrNameInline:    'inline'!default;
+
+// Register attribute type for media
+$rkrMAttributesNaming: rkrFnRegisterAttribute(media, $rkrMediaAttrType, $rkrMediaAttrName);
+
+// The gutter used near the image
+$rkrMediaVGutter: $rkrVSpacingBase !default;
+
+// Media Object's  flags
+
+// Use media--block to display the image on top of the text
+$rkrMediaBUseBlock 	 : true !default;
+
+// Use media--rev to reverse the position of the image
+$rkrMediaBUseReversed : true !default;
+
+// Use media--stck to stick the image to text
+$rkrMediaBUseSticked  : true !default;
+
+// Use modifiers to change the space between image and text
+$rkrMediaBUseModifiers: true !default;
+
+// Use media--inline to display image and body inline
+$rkrMediaBUseInline: true !default;
+
+// Vertical align of inline image and body
+$rkrMediaVInlineAlign: middle;

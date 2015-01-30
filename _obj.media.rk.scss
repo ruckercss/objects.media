@@ -1,0 +1,131 @@
+/*------------------------------------*\
+    #Media Object
+\*------------------------------------*/
+
+/** 
+ * Place any image and a text-like content side-by-side, or one above the other as per:
+ * stubbornella.org/content/2010/06/25/theMedia-object-saves-hundreds-of-lines-of-code
+ */
+
+
+//
+// Define silent classes
+//
+
+/**
+ * Media object block definition
+ */
+%oMedia { 
+  @extend %uClearfix;
+  display: block;
+}
+
+  /**
+   * The image element - aligned to the left
+   */
+  %oMedia_image {
+    float: left;
+    margin-right: $rkrMediaVGutter;
+  }
+
+  /**
+   * The body element
+   */
+  %oMedia_body {
+    overflow: hidden;
+  }
+
+
+/**
+ * The reversed modifier - align the image to the right
+ */
+%oMedia-rev {
+  %oMedia_image {
+    float: right;
+    margin-right: 0;
+    margin-left: $rkrMediaVGutter;
+  }
+}
+
+/**
+ * The sticked modifier - makes the image to be sticked to the body with no space between them
+ */
+%oMedia-sticked {
+  %oMedia_image {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+/**
+ * Media Block
+ * The image sets on top of the text
+ */
+
+%oMedia-block {
+
+  %oMedia_image {
+    float: none;
+    margin-right: 0;
+    margin-bottom: $rkrMediaVGutter; 
+  }
+
+  &%oMedia-sticked %oMedia_image { margin: 0; }
+
+}
+
+
+
+//
+// Define rules 
+//
+
+#{rkrFnMediaRule($rkrMediaAttrNameBase, false)} {
+  @extend %oMedia;  
+}
+
+  #{rkrFnMediaRule($rkrMediaAttrNameImage)} {
+    @extend %oMedia_image;
+  }
+
+  #{rkrFnMediaRule($rkrMediaAttrNameBody)} {
+    @extend %oMedia_body;
+  }
+
+@if $rkrMediaBUseReversed {
+  #{rkrFnMediaRule($rkrMediaAttrNameReversed, false)} {
+    @extend %oMedia-rev;  
+  }  
+}
+
+@if $rkrMediaBUseSticked {
+  #{rkrFnMediaRule($rkrMediaAttrNameSticked, false)} {
+    @extend %oMedia-sticked;  
+  }  
+}
+
+@if $rkrMediaBUseModifiers {
+  @include rkrMxMediaModifiers();
+}
+
+
+
+@if $rkrMediaBUseBlock {
+  #{rkrFnMediaRule($rkrMediaAttrNameBlock, false)} {
+    @extend %oMedia-block;  
+  }  
+}
+
+
+
+@if $rkrMediaBUseInline {
+  #{rkrFnMediaRule($rkrMediaAttrNameInline, false)} {
+    #{rkrFnMediaRule($rkrMediaAttrNameImage)},
+    #{rkrFnMediaRule($rkrMediaAttrNameBody)}
+     {
+      float: none;
+      display: inline-block;
+      vertical-align: $rkrMediaVInlineAlign;
+    }
+  }  
+}
